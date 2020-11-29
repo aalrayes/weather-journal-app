@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Journal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+  <div id="app">
+
+    <!--Header-->
+    <header>
+      <!-- Image and text -->
+      <nav class="navbar navbar-dark sticky-top d-flex flex-column justify-content-center mb-5 font-weight-bold">
+        <a class="navbar-brand text-a" href="/">
+          Weather Journal
+        </a>
+      </nav>
+    </header>
+
+    <div class="container-fluid d-flex justify-content-center">
+
+      <!-- <div class="spinner-border text-light " role="status">
+      <span class="sr-only">Loading...</span>
+    </div> -->
+
+    </div>
+
+
+    <div class="container-fluid bg-danger w-75 p-5" id="weather">
+      <div class="row">
+
+        <div class="col-1">
+          <svg height="100" viewBox="0 0 74 74" width="100" xmlns="http://www.w3.org/2000/svg">
+            <g id="Icons">
+              <path
+                d="m60.544 42.86h-49.616a8.925 8.925 0 0 1 -.894-17.806 11.46 11.46 0 0 1 14.093-12.683 8.934 8.934 0 0 1 14.773-.926 11.309 11.309 0 0 1 7.323-2.65 11.461 11.461 0 0 1 11.43 10.82 11.451 11.451 0 0 1 14.347 11.078c0 6.482-5.354 12.167-11.456 12.167zm-49.573-15.85h-.043a6.925 6.925 0 1 0 0 13.85h49.616c5.037 0 9.456-4.75 9.456-10.167a9.452 9.452 0 0 0 -12.987-8.766 1 1 0 0 1 -1.369-1.014c.019-.221.023-.446.023-.672a9.457 9.457 0 0 0 -9.446-9.447 9.337 9.337 0 0 0 -6.782 2.877.986.986 0 0 1 -.845.3 1 1 0 0 1 -.744-.5 6.934 6.934 0 0 0 -12.313.509 1 1 0 0 1 -1.226.526 9.181 9.181 0 0 0 -2.937-.468 9.457 9.457 0 0 0 -9.446 9.447 9.332 9.332 0 0 0 .279 2.286 1 1 0 0 1 -1.025 1.243c-.072-.004-.143-.004-.211-.004z" />
+              <path
+                d="m15.425 55.261a4.1 4.1 0 0 1 -3.85-5.49c.667-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.637 5.182.97 7.021a4.1 4.1 0 0 1 -3.846 2.7zm1.354-7.833c-1.579 1.1-3.091 2.383-3.323 3.024a2.092 2.092 0 1 0 3.934 1.428c.232-.641-.103-2.597-.611-4.452z" />
+              <path
+                d="m29.3 55.261a4.1 4.1 0 0 1 -3.85-5.49c.667-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.637 5.182.97 7.021a4.1 4.1 0 0 1 -3.846 2.7zm1.354-7.833c-1.579 1.1-3.091 2.383-3.323 3.024a2.092 2.092 0 1 0 3.934 1.428c.228-.641-.107-2.597-.615-4.452z" />
+              <path
+                d="m43.167 55.261a4.1 4.1 0 0 1 -3.85-5.49c.667-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.637 5.182.97 7.021a4.1 4.1 0 0 1 -3.846 2.7zm1.354-7.833c-1.579 1.1-3.091 2.383-3.323 3.024a2.092 2.092 0 1 0 3.934 1.428c.232-.641-.103-2.597-.611-4.452z" />
+              <path
+                d="m57.038 55.261a4.1 4.1 0 0 1 -3.85-5.49c.667-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.637 5.182.97 7.021a4.1 4.1 0 0 1 -3.846 2.7zm1.354-7.833c-1.579 1.1-3.091 2.383-3.323 3.024a2.092 2.092 0 1 0 3.931 1.428c.235-.641-.1-2.597-.607-4.452z" />
+              <path
+                d="m21.551 67.03a4.092 4.092 0 0 1 -3.843-5.489c.666-1.839 4.485-4.292 5.244-4.766a1 1 0 0 1 1.479.537c.279.85 1.638 5.182.971 7.021a4.1 4.1 0 0 1 -3.851 2.697zm1.359-7.83c-1.578 1.1-3.09 2.383-3.322 3.024a2.092 2.092 0 1 0 3.934 1.427c.232-.642-.103-2.598-.612-4.451z" />
+              <path
+                d="m35.421 67.03a4.094 4.094 0 0 1 -3.844-5.488c.669-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.638 5.182.971 7.021a4.1 4.1 0 0 1 -3.852 2.697zm1.36-7.831c-1.579 1.1-3.091 2.384-3.324 3.025a2.093 2.093 0 0 0 3.936 1.427c.232-.642-.103-2.598-.612-4.451z" />
+              <path
+                d="m49.292 67.03a4.094 4.094 0 0 1 -3.844-5.488c.667-1.839 4.487-4.293 5.246-4.767a1 1 0 0 1 1.479.537c.279.85 1.638 5.182.971 7.021a4.1 4.1 0 0 1 -3.852 2.697zm1.36-7.832c-1.579 1.1-3.091 2.384-3.323 3.025a2.093 2.093 0 1 0 3.935 1.427c.236-.641-.103-2.597-.612-4.45z" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="col-3 ml-3">
+          <div id="temp"></div>
+        </div>
+
+        <div class="col-3 text-center">
+          <div id="date"></div>
+
+        </div>
+
+
+      </div>
+
+  
+    </div>
+
+    <div class=" container-fluid  w-75 border border-light ">
+
+      <div class="row">
+        <div class="col-12">
+
+          <div  id="content">
+            --
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div
+      class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5 bg-dark-mine w-25 p-5 rounded">
+
+      <form class="w-100" action="" method="POST">
+
+        <div class="form-group w-100">
+          <label for="" class="text-light">Zip code</label>
+          <input type="text" class="form-control form-control-md" name="" id="zip" aria-describedby="helpId"
+            placeholder="enter zip code here" required>
+
+        </div>
+
+        <div class="form-group w-100 ">
+          <label for="feelings" class="text-white">Feelings</label>
+          <textarea class="form-control" name="" id="feelings" rows="4"></textarea>
+          <button type="button" id="generate" class="btn btn-outline-light mt-4">Generate</button>
+        </div>
+
+
+
+      </form>
+
+
+    </div>
+
+    <!--main-->
+
+
+    <!-- Footer -->
+    <footer class="bg-dark-mine text-light fixed-bottom d-flex flex-column justify-content-center align-content-center">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="/"> a.alrayes</a>
+      </div>
+    </footer>
+    <!-- Footer -->
+
+  </div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+  </script>
+  <script src="./Js/app.js" type="text/javascript"></script>
+</body>
+
+</html>

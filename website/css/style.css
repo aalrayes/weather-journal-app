@@ -1,0 +1,11 @@
+body{
+    background-color: #1e202b;
+}
+
+.bg-dark-mine{
+    background-color: #272a38;
+}
+
+input:invalid{
+    border: 1.5px solid red;
+}
