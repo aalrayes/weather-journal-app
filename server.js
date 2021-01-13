@@ -1,12 +1,9 @@
-// Setup empty JS object to act as endpoint for all routes
+
 const projectData = {};
-// Require Express to run server and routes
 const express = require('express');
-// Start up an instance of app
 const app = express();
 
 /* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
     extended: false
@@ -28,20 +25,20 @@ app.use(cors());
 app.use(express.static('website'));
 
 // Setup Server
-const port = 8000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`local host running on port: ${port}`);
 });
 
-// Initialize all route with a callback function
-const data = [];
+app.post('/all', addWeather);
 
-// Post Route
-app.post('http://localhost:8000/addZip', (request, response) => {
-    data.push(request.body);
+app.get('/load', (request, response) => {
+    response.send(projectData);
 });
 
-//Get Route
-app.get('http://localhost:8000/zip', (request, response) => {
-    response.send(data);
-});
+function addWeather(req, res) {
+    projectData.temperature = req.body.temperature;
+    projectData.date = req.body.date;
+    projectData.feelings = req.body.feelings;
+    res.send(projectData);
+}
