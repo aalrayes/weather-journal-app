@@ -4,7 +4,7 @@ let newDate = d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
 const api_url = `http://api.openweathermap.org/data/2.5/weather?zip=`;
 const unit = '&units=metric';
 
-const OpenWeatherMapKey = '&appid=f8f790b9897be880adc3460f064e32dd';
+const OpenWeatherMapKey = '';
 
 document.getElementById('generate').addEventListener('click', init);
 
